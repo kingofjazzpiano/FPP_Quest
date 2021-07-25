@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Key.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Main.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/GUI.tscn" type="PackedScene" id=5]
+
+[node name="Main" type="Spatial"]
+pause_mode = 2
+script = ExtResource( 4 )
+
+[node name="GUI" parent="." instance=ExtResource( 5 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+pause_mode = 1
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.809967, 0 )
+
+[node name="Room" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.032999, 3.08962, 0.00271509 )
+use_collision = true
+invert_faces = true
+width = 20.0
+height = 4.612
+depth = 20.0
+
+[node name="Red_Doorway" type="CSGBox" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.060575, -7.08162, -0.488038, -10.0395 )
+height = 3.4
+
+[node name="Door" parent="Room/Red_Doorway" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.749023 )
+color = "Red"
+
+[node name="Blue_Doorway" type="CSGBox" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.060575, -0.089, -0.488, -10.0315 )
+height = 3.4
+
+[node name="Door" parent="Room/Blue_Doorway" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.749023 )
+color = "Blue"
+
+[node name="Green_Doorway" type="CSGBox" parent="Room"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.060575, 6.906, -0.488, -10.0315 )
+height = 3.4
+
+[node name="Door" parent="Room/Green_Doorway" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.749023 )
+color = "Green"
+
+[node name="Red_Key" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 7.18283, 0.940823, 8.60283 )
+color = "Red"
+
+[node name="Blue_Key" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.466681, 0.940823, 8.60283 )
+color = "Blue"
+
+[node name="Green_Key" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -7.09412, 0.940823, 8.60283 )
+color = "Green"

@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Key.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 2.64071, 0.580062, 7.50246 )
+
+[node name="Key" type="Spatial"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="CSGTorus" type="CSGTorus" parent="."]
+sides = 32
+ring_sides = 16
+material = SubResource( 1 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="CSGTorus"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -7.41318 )
+radius = 0.7
+height = 10.0
+material = SubResource( 2 )
+
+[node name="CSGBox" type="CSGBox" parent="CSGTorus"]
+transform = Transform( 1.01887, 0, 0, 0, 0.30566, 0, 0, 0, 0.604702, -1, 0, -11 )
+material = SubResource( 3 )
+
+[node name="CSGBox2" type="CSGBox" parent="CSGTorus"]
+transform = Transform( 0.376682, 0, 0, 0, 0.30566, 0, 0, 0, 0.604702, -1.63985, 0, -11.9555 )
+material = SubResource( 4 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-06, 0, -4.79631 )
+shape = SubResource( 5 )
